@@ -60,12 +60,12 @@ const Favlist =()=>{
                   <div style={{padding:'10px', alignSelf: 'center'}}>{celsius?item.current&&item.current.temp_c:item.current&&item.current.temp_f} {celsius?"°C":"°F"}</div>
                   <div style={{padding:'10px', alignSelf: 'center'}}>{item.current&&item.current.condition.text}</div>
                 </div>
-                <div  style={{padding:'10px', display:"flex", justifyContent:'center', flexDirection:'column'}}>
+                <div  style={{padding:'10px', display:"flex", justifyContent:'center', flexDirection:'column', alignItems: "center"}}>
                       <p><BsFillDropletFill size={20}/> Humidity: {item.current&&item.current.humidity}%</p>
                       <p><BsFillCloudRainFill size={20}/> Precipitation: {item.current&&item.current.precip_mm}mm</p>
                      
                   </div>
-                  <div  style={{padding:'10px', display:"flex", justifyContent:'center', flexDirection:'column'}}>
+                  <div  style={{padding:'10px', display:"flex", justifyContent:'center', flexDirection:'column', alignItems: "center"}}>
                       <p><MdCompress size={20}/> Pressure: {item.current&&item.current.pressure_mb}mb</p>
                       <p><TbWind size={20}/> Wind: {item.current&&item.current.wind_kph}kph </p>
                   </div>
