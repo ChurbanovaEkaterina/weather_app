@@ -31,7 +31,6 @@ const Favlist =()=>{
         })
       .catch(err => console.error(err));
     })
-    console.log("i inside second")
   },[areAllCities])
 
   const checkCityInArray=(city)=>city===oneCity
@@ -51,10 +50,10 @@ const Favlist =()=>{
 
   return(
     <>
-      {areAllCities.length===0?<div style={{display:'flex', justifyContent:"center", marginTop:"20%", fontSize:"20px"}}>There are no your favourite cities. Let's add first one!</div>:<div className='forecast' style={{display:"flex", justifyContent:'center', flexWrap:'wrap'}}>{datacities.map((item,i)=>{
+      {areAllCities.length===0?<div className="noFav"style={{display:'flex', justifyContent:"center", marginTop:"20%", fontSize:"20px"}}>There are no your favourite cities. Let's add first one!</div>:<div className='forecast' style={{display:"flex", justifyContent:'center', flexWrap:'wrap'}}>{datacities.map((item,i)=>{
           return(
             <>
-              <div key={i} style={{display:"flex", alignItems: "center", justifyContent:"center",gap: "12%", flexDirection:"row", padding:"1%", width:"80%"}}>
+              <div key={i} className="oneFavItem">
               
               <div style={{padding:'10px', display:"flex", justifyContent:'center', flexDirection:'column'}}>
                   <h2 style={{padding:'10px', alignSelf: 'center'}}>{areAllCities.some(checkCityInArray)?<AiFillHeart onClick={addCity} style={{margin:"3px"}}/>:null} {item.location&&item.location.name}</h2>

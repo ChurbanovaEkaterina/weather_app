@@ -10,7 +10,26 @@ import { AppContext } from '../AppContext'
 const Navbar =()=>{
   const [weather_city, setCity] =useState('')
   const [favList, setFavList]=useState(true)
-  const {areAllCities, setAreAllCities, search, setSearch, oneCity, setOneCity, celsius, setCelsium, trigger, setTrigger, msg,setMsg} =useContext(AppContext)
+  const { setSearch, oneCity, setTrigger, msg,setMsg} =useContext(AppContext)
+  useEffect(() => {
+
+    if(oneCity===""){
+      const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'aa7c5eda80msh0c8392bc75a3a95p19bbf7jsn8b53ecb924e7',
+        'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+      }
+    };
+    fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=tel-aviv&days=3`, options)
+      .then(response => response.json())
+      .then(data=>{
+            setSearch(data)
+          //console.log(data)
+        })
+      .catch(err => console.error(err));}
+      
+    },[]);
   let handleClick=()=>{
 
     const options = {
@@ -39,7 +58,7 @@ const Navbar =()=>{
     <>
     <div>
       <div style={{padding:'20px', backgroundColor:'DodgerBlue'}}>
-        <Link to='/home' onClick={()=>{setFavList(true)}} style={{padding:'20px', textDecoration:'none', color:"white"}}><strong>Home</strong></Link>
+        <Link to='/' onClick={()=>{setFavList(true)}} style={{padding:'20px', textDecoration:'none', color:"white"}}><strong>Home</strong></Link>
         <Link to='/favlist' onClick={()=>{setFavList(false)}} style={{padding:'20px', textDecoration:'none', color:"white"}}><strong>Favorites</strong></Link>
       </div>
     </div>
@@ -49,7 +68,7 @@ const Navbar =()=>{
     </div>}
 
     <Routes>
-    <Route path='/home' element={<Mainlist/>}/>
+    <Route path='/' element={<Mainlist/>}/>
     <Route path='/favlist' element={<Favlist/>}/>
 
     </Routes>

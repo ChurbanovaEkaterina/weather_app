@@ -18,7 +18,8 @@
     console.log('arr',arr)
     console.log('arr[0]',arr[0])
     return(
-      <div><div>Hello</div></div>
+      <div><div>Hello</div><div><div>Hello</div></div></div>
+
     )
   })
 }</div>
